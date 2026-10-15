@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ganesh Sahadeo Meshram | Scientific Machine Learning Research Engineer</title>
+<meta name="description" content="Ganesh Sahadeo Meshram: Scientific Machine Learning research engineer working on physics-informed neural networks, neural operators and lattice Boltzmann modelling. Ph.D. (thesis submitted), IIT Kharagpur.">
+<meta property="og:title" content="Ganesh Sahadeo Meshram | SciML Research Engineer">
+<meta property="og:description" content="Physics-informed deep learning, neural operators and lattice Boltzmann / CFD modelling of multiphase and microscale flows.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #f7f8fa; --surface: #ffffff; --fg: #14181f; --muted: #5a6472;
+    --line: #e2e6ec; --accent: #0b6e8a; --accent-soft: #e3f2f6; --accent-fg: #ffffff;
+    --shadow: 0 1px 2px rgba(16,24,40,.05), 0 4px 14px rgba(16,24,40,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1116; --surface: #161b22; --fg: #e8ecf1; --muted: #9aa5b4;
+      --line: #262d37; --accent: #5cc4de; --accent-soft: #14303a; --accent-fg: #0e1116;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: var(--accent-fg); padding: 8px 12px; border-radius: 6px; z-index: 100; }
+  .skip:focus { left: 8px; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; line-height: 1.2; margin: 0; }
+
+  /* Nav */
+  .nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+  .brand { font-family: Georgia, serif; font-weight: 700; color: var(--fg); white-space: nowrap; }
+  .nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
+  .nav ul::-webkit-scrollbar { display: none; }
+  .nav li a { display: block; padding: 6px 10px; color: var(--muted); font-size: .9rem; border-radius: 6px; white-space: nowrap; }
+  .nav li a:hover { color: var(--fg); background: var(--accent-soft); text-decoration: none; }
+
+  /* Hero */
+  .hero { padding: 64px 0 40px; }
+  .eyebrow { color: var(--accent); font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(2.2rem, 7vw, 3.6rem); letter-spacing: -0.02em; }
+  .hero .role { font-size: clamp(1.05rem, 2.6vw, 1.35rem); color: var(--muted); margin: 14px 0 6px; max-width: 640px; }
+  .hero .where { color: var(--muted); font-size: .98rem; margin: 0 0 26px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 9px; font-weight: 600; font-size: .95rem; border: 1px solid var(--line); background: var(--surface); color: var(--fg); }
+  .btn:hover { text-decoration: none; border-color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+  .btn.primary:hover { filter: brightness(1.08); }
+
+  .hero-grid { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: center; }
+  .portrait { margin: 0; justify-self: end; width: 300px; aspect-ratio: 1; border-radius: 28px; overflow: hidden; background: #000; border: 1px solid var(--line); box-shadow: 0 12px 40px rgba(11,110,138,.28); }
+  .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 26px; }
+    .portrait { order: -1; width: 200px; justify-self: start; border-radius: 24px; }
+  }
+  .hero-grid:not(:has(.portrait)) { grid-template-columns: 1fr; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 40px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; box-shadow: var(--shadow); }
+  .stat b { display: block; font-family: Georgia, serif; font-size: 1.9rem; color: var(--accent); line-height: 1.1; }
+  .stat span { color: var(--muted); font-size: .85rem; }
+
+  /* Sections */
+  section { padding: 48px 0 8px; }
+  .sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 22px; }
+  .sec-head h2 { font-size: 1.65rem; }
+  .sec-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  p { margin: 0 0 14px; }
+  .lead { font-size: 1.08rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 4px 12px; font-size: .85rem; font-weight: 500; }
+
+  /* Timeline */
+  .item { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; margin-bottom: 16px; box-shadow: var(--shadow); }
+  .item-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 4px; }
+  .item h3 { font-size: 1.2rem; }
+  .when { color: var(--muted); font-size: .9rem; white-space: nowrap; }
+  .org { color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+  .item ul { margin: 0; padding-left: 20px; }
+  .item li { margin-bottom: 7px; }
+  .note { color: var(--muted); font-size: .95rem; }
+
+  /* Research cards */
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .card h3 { font-size: 1.08rem; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: .94rem; flex: 1; }
+  .card .tag { font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+  /* Skills table */
+  .skills { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+  .skill-row { display: grid; grid-template-columns: 190px 1fr; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+  .skill-row:last-child { border-bottom: 0; }
+  .skill-row dt { font-weight: 600; }
+  .skill-row dd { margin: 0; color: var(--muted); }
+  @media (max-width: 640px) { .skill-row { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* Publications */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .filters button { font: inherit; font-size: .88rem; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; }
+  .filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+  .pub-group h3 { font-size: 1.1rem; margin: 26px 0 10px; }
+  .pubs { list-style: none; margin: 0; padding: 0; }
+  .pub { display: grid; grid-template-columns: 44px 1fr; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
+  .pub:last-child { border-bottom: 0; }
+  .pub .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pub .t { font-weight: 600; }
+  .pub .m { color: var(--muted); }
+  .pub .status { display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-left: 6px; vertical-align: 1px; }
+  .pub a.doi { display: inline-block; margin-top: 2px; font-size: .88rem; }
+
+  /* Education / awards / workshops */
+  .edu { display: grid; gap: 14px; }
+  .award-list, .plain { list-style: none; margin: 0; padding: 0; }
+  .award-list li, .plain li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; }
+  .award-list b { color: var(--accent); }
+
+  /* Contact */
+  .contact { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px; box-shadow: var(--shadow); }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+  footer { padding: 40px 0 56px; margin-top: 32px; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); }
+  noscript p { background: var(--accent-soft); padding: 12px 16px; border-radius: 10px; }
+  @media print { .nav, .filters, .cta { display: none; } body { background: #fff; color: #000; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">G. S. Meshram</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+
+  <div class="hero">
+    <div class="hero-grid">
+    <div class="hero-text">
+    <div class="eyebrow">Scientific Machine Learning</div>
+    <h1>Ganesh Sahadeo Meshram</h1>
+    <p class="role">Research engineer building physics-informed deep learning, neural operators and fast surrogate models for fluid and thermal systems.</p>
+    <p class="where">Ph.D. (thesis submitted), IIT Kharagpur &nbsp;·&nbsp; Nagpur, Maharashtra, India</p>
+    <div class="cta">
+      <a class="btn primary" href="#publications">View publications</a>
+      <a class="btn" href="https://github.com/Ganesh1591" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/ganesh-meshram-823689276" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:ganeshmeshram.iitkgp@gmail.com">Email me</a>
+    </div>
+    </div>
+    <figure class="portrait">
+      <img src="photo.jpg" onerror="this.closest('figure').remove()" alt="Portrait of Ganesh Sahadeo Meshram in a navy suit" width="720" height="720" fetchpriority="high">
+    </figure>
+    </div>
+
+    <div class="stats" aria-label="Highlights">
+      <div class="stat"><b>5+</b><span>years of SciML research</span></div>
+      <div class="stat"><b>28</b><span>research outputs</span></div>
+      <div class="stat"><b>9</b><span>journal articles</span></div>
+      <div class="stat"><b>12</b><span>conference papers</span></div>
+      <div class="stat"><b>2</b><span>Best Paper Awards</span></div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="sec-head"><h2>About</h2></div>
+    <p class="lead">I am a Scientific Machine Learning engineer with more than five years of research in physics-informed deep learning, neural operators, and lattice Boltzmann / CFD modelling of multiphase and microscale flows.</p>
+    <p>I currently build production-grade SciML models and research software at Zenteiq AI Innovation, including thermal surrogate models delivered to two industry clients. My work covers the full pipeline: model design, GPU training, hyperparameter optimisation and deployment.</p>
+    <p>I have authored 28 research outputs: 9 journal articles (including one accepted in <em>Langmuir</em>), 4 under review, 12 conference papers (including AAAI-26 and the APS March Meeting) and 3 book chapters.</p>
+    <div class="chips" aria-label="Core strengths">
+      <span class="chip">Physics-Informed Neural Networks</span>
+      <span class="chip">Neural Operators</span>
+      <span class="chip">Physics-guided CNN / U-Net / LSTM</span>
+      <span class="chip">Thermal surrogate modelling</span>
+      <span class="chip">Lattice Boltzmann Method</span>
+      <span class="chip">PyTorch &amp; JAX</span>
+      <span class="chip">GPU / HPC training</span>
+      <span class="chip">FastAPI · Django · Streamlit</span>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><h2>Experience</h2></div>
+
+    <article class="item">
+      <div class="item-top"><h3>SciML Research Software Engineer</h3><span class="when">2026 – Present</span></div>
+      <div class="org">Zenteiq AI Innovation Pvt. Ltd., India</div>
+      <ul>
+        <li>Developed thermal surrogate models for two industry clients, replacing expensive thermal/CFD simulations with fast, accurate data-driven predictions of temperature and heat-transfer behaviour.</li>
+        <li>Develop scientific machine learning models (physics-informed neural networks, neural operators and data-driven surrogates) for PDE-governed engineering and physical systems.</li>
+        <li>Design and build modular, reusable research software for SciML model development, training, evaluation and inference.</li>
+        <li>Train deep learning models on GPU infrastructure and run systematic hyperparameter tuning to improve accuracy, stability and generalisation.</li>
+        <li>Translate research prototypes into maintainable, tested code that can be reused across projects and deployed as services.</li>
+      </ul>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><h3>Doctoral Researcher: Scientific Machine Learning &amp; Microfluidics</h3><span class="when">2019 – 2026</span></div>
+      <div class="org">Indian Institute of Technology Kharagpur, West Bengal</div>
+      <ul>
+        <li>Developed Droplet-LNO, a physics-informed Laplace Neural Operator that predicts droplet spreading dynamics on complex surfaces.</li>
+        <li>Coupled PINNs with the lattice Boltzmann method to predict unsteady flow in fractal-rough microchannels and droplet wetting on rough surfaces.</li>
+        <li>Built an Attention U-Net–LBM surrogate for real-time flow prediction in patterned microchannels, plus image-analysis-driven physics-guided deep learning models for irregular-shaped channels.</li>
+        <li>Created sequence models (LSTM, LST-Nets) for droplet contact-angle and spreading prediction, and ML classifiers for wetting-state demarcation.</li>
+        <li>Wrote in-house pseudo-potential multiphase LBM solvers (C, Python, MATLAB) to generate high-fidelity training data; trained models on GPU and HPC clusters.</li>
+      </ul>
+      <p class="note" style="margin:12px 0 0">Supervisors: Prof. Suman Chakraborty (Mechanical Engineering) and Prof. Partha P. Chakrabarti (Computer Science &amp; Engineering).</p>
+    </article>
+  </section>
+
+  <section id="research">
+    <div class="sec-head"><h2>Research highlights</h2></div>
+    <div class="grid">
+      <article class="card">
+        <div class="tag">Neural operator</div>
+        <h3>Droplet-LNO</h3>
+        <p>A physics-informed Laplace Neural Operator that predicts droplet spreading dynamics on complex surfaces.</p>
+      </article>
+      <article class="card">
+        <div class="tag">PINN + LBM</div>
+        <h3>Lattice-Boltzmann-driven PINNs</h3>
+        <p>Physics-informed networks coupled with the lattice Boltzmann method to learn droplet wetting on rough surfaces and unsteady flow in fractal-rough microchannels.</p>
+      </article>
+      <article class="card">
+        <div class="tag">Real-time surrogate</div>
+        <h3>Attention U-Net–LBM</h3>
+        <p>A fast surrogate for flow prediction in patterned microchannels, replacing repeated solver runs with near-instant inference.</p>
+      </article>
+      <article class="card">
+        <div class="tag">Physics-guided DL</div>
+        <h3>Irregular-shaped microchannels</h3>
+        <p>Image-analysis-inspired, physics-guided deep learning for predicting fluid flow in channels with irregular geometry.</p>
+      </article>
+      <article class="card">
+        <div class="tag">Sequence models</div>
+        <h3>LSTM and LST-Nets for wetting</h3>
+        <p>Sequence models for droplet contact-angle and spreading prediction, with ML classifiers that demarcate wetting states of textured surfaces.</p>
+      </article>
+      <article class="card">
+        <div class="tag">Industry</div>
+        <h3>Thermal surrogate models</h3>
+        <p>Data-driven surrogates delivered to two industry clients that stand in for costly thermal/CFD simulations when predicting temperature and heat transfer.</p>
+      </article>
+    </div>
+    <p class="note" style="margin-top:18px">Doctoral thesis: <em>Amalgamation of Physics and Scientific Machine Learning for Predicting Droplet Spreading Dynamics and Fluid Flows</em>.</p>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><h2>Technical skills</h2></div>
+    <dl class="skills" style="margin:0">
+      <div class="skill-row"><dt>SciML methods</dt><dd>PINNs, neural operators (Laplace NO), physics-guided CNN / U-Net / Attention U-Net, LSTM, surrogate modelling (incl. thermal surrogates), inverse problems</dd></div>
+      <div class="skill-row"><dt>ML / DL frameworks</dt><dd>PyTorch, JAX, TensorFlow, Keras, Scikit-learn</dd></div>
+      <div class="skill-row"><dt>Model development</dt><dd>Training pipelines, hyperparameter tuning, model evaluation, GPU training, HPC clusters</dd></div>
+      <div class="skill-row"><dt>Deployment</dt><dd>FastAPI, Django, Streamlit</dd></div>
+      <div class="skill-row"><dt>Numerical methods</dt><dd>Lattice Boltzmann method (single- and multiphase), CFD, finite-difference solvers</dd></div>
+      <div class="skill-row"><dt>Programming</dt><dd>Python, C, Fortran, MATLAB</dd></div>
+      <div class="skill-row"><dt>Data &amp; visualisation</dt><dd>NumPy, Pandas, Matplotlib, Seaborn, Plotly, Tecplot</dd></div>
+      <div class="skill-row"><dt>Simulation tools</dt><dd>ANSYS Fluent, COMSOL Multiphysics</dd></div>
+      <div class="skill-row"><dt>Other</dt><dd>Linux, Windows, LaTeX (Overleaf), Inkscape</dd></div>
+      <div class="skill-row"><dt>Languages</dt><dd>English, Hindi, Marathi</dd></div>
+    </dl>
+  </section>
+
+  <section id="education">
+    <div class="sec-head"><h2>Education</h2></div>
+    <div class="edu">
+      <article class="item" style="margin:0">
+        <div class="item-top"><h3>Ph.D., Thermal Science &amp; Engineering <span class="status" style="font-family:system-ui">Thesis submitted</span></h3><span class="when">2019 – 2026</span></div>
+        <div class="org">Indian Institute of Technology Kharagpur</div>
+        <p class="note" style="margin:0">Thesis: Amalgamation of Physics and Scientific Machine Learning for Predicting Droplet Spreading Dynamics and Fluid Flows. Supervisors: Prof. Suman Chakraborty &amp; Prof. Partha P. Chakrabarti.</p>
+      </article>
+      <article class="item" style="margin:0">
+        <div class="item-top"><h3>M.Tech., Thermal Science &amp; Engineering</h3><span class="when">2017 – 2019</span></div>
+        <div class="org">Indian Institute of Technology Bhubaneswar</div>
+        <p class="note" style="margin:0">Thesis: Numerical Investigation of Wettability and Flow through Textured Microchannels. Supervisor: Dr. Sasidhar Kondaraju.</p>
+      </article>
+      <article class="item" style="margin:0">
+        <div class="item-top"><h3>M.Tech., Earth System Science &amp; Technology</h3><span class="when">2015 – 2017</span></div>
+        <div class="org">Indian Institute of Technology Kharagpur</div>
+        <p class="note" style="margin:0">Thesis: Analysis of Oceanic Heat Content in the Northern Indian Ocean in Contrasting Monsoon Years. Supervisor: Prof. Mihir Kumar Dash.</p>
+      </article>
+      <article class="item" style="margin:0">
+        <div class="item-top"><h3>B.E., Mechanical Engineering</h3><span class="when">2009 – 2013</span></div>
+        <div class="org">Nagpur University</div>
+        <p class="note" style="margin:0">Project: Design and Fabrication of an Automatic Tyre Inflation System for Cars. Supervisor: Prof. M. D. Kayarkar.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="sec-head"><h2>Publications</h2></div>
+    <p class="note">28 outputs: 9 journal articles (8 published + 1 accepted) · 4 journal articles under review · 12 conference papers · 3 book chapters. ORCID: <a href="https://orcid.org/0000-0001-8557-8861" target="_blank" rel="noopener">0000-0001-8557-8861</a></p>
+    <div class="filters" role="group" aria-label="Filter publications">
+      <button type="button" data-f="all" aria-pressed="true">All (28)</button>
+      <button type="button" data-f="journal" aria-pressed="false">Journal (9)</button>
+      <button type="button" data-f="review" aria-pressed="false">Under review (4)</button>
+      <button type="button" data-f="conf" aria-pressed="false">Conference (12)</button>
+      <button type="button" data-f="chapter" aria-pressed="false">Book chapters (3)</button>
+    </div>
+    <div id="pub-list"></div>
+    <noscript><p>Enable JavaScript to see the full publication list, or visit the ORCID profile above.</p></noscript>
+  </section>
+
+  <section id="awards">
+    <div class="sec-head"><h2>Awards &amp; honours</h2></div>
+    <ul class="award-list">
+      <li><b>Travel grant:</b> ANRF full travel grant to present at the AAAI Conference on Artificial Intelligence (AAAI-26), Singapore, 2026.</li>
+      <li><b>Travel grant:</b> IIT Kharagpur full travel grant to present at the APS March Meeting 2025, Anaheim, California, USA.</li>
+      <li><b>Best Paper Award:</b> RTTP Conference, NIT Hamirpur, 2024.</li>
+      <li><b>Best Paper Award:</b> ICMech-REC Conference, NIT Warangal, 2023.</li>
+      <li><b>Fellowships:</b> MHRD Doctoral Fellowship, IIT Kharagpur (2019–2024); MHRD M.Tech. Fellowships, IIT Bhubaneswar (2017–2019) and IIT Kharagpur (2015–2017).</li>
+      <li><b>GATE:</b> Qualified 2014, 2015 and 2017.</li>
+    </ul>
+
+    <div class="sec-head" style="margin-top:34px"><h2>Workshops &amp; training</h2></div>
+    <ul class="plain">
+      <li>Hands-on Workshop on the Basics of High Performance Computing, NSM Nodal Centre for Training in HPC &amp; AI, IIT Kharagpur (Nov 2023).</li>
+      <li>Online Workshop on Artificial Intelligence and High Performance Computing, NIT Mizoram &amp; IIT Kharagpur, under NSM (Jul 2022).</li>
+      <li>Indo-US SPARC Short-term Course on Immersed Boundary and Meshless Methods for Navier–Stokes Equations, IIT Kharagpur &amp; University of Illinois Urbana-Champaign (Jul 2022).</li>
+      <li>Data Analytics in Power BI, online workshop (Apr 2023).</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head"><h2>Contact</h2></div>
+    <div class="contact">
+      <p class="lead" style="margin:0">I'm happy to talk about SciML research, collaborations or opportunities in scientific machine learning.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:ganeshmeshram.iitkgp@gmail.com">ganeshmeshram.iitkgp@gmail.com</a>
+        <a class="btn" href="mailto:ganesh15@iitkgp.ac.in">ganesh15@iitkgp.ac.in</a>
+        <a class="btn" href="https://github.com/Ganesh1591" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/ganesh-meshram-823689276" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://orcid.org/0000-0001-8557-8861" target="_blank" rel="noopener">ORCID</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Ganesh Sahadeo Meshram · Nagpur, India</div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  var D = "https://doi.org/";
+  var P = [
+    // Journal articles: published / accepted
+    {t:"journal", s:"accepted", a:"Meshram, G. S., Chakrabarti, P. P., & Chakraborty, S. (2026)", ti:"Learning droplet wetting from kinetic theory: Lattice-Boltzmann-driven physics-informed neural networks for rough surfaces.", v:"Langmuir (accepted; in proof).", d:"10.1021/acs.langmuir.6c03526"},
+    {t:"journal", a:"Debashis P., Kumud R., Sachindra K.R., Gloria B., Meshram, G. S. (2026)", ti:"CFD-driven machine learning models for predicting flow and thermal characteristics in brazed plate heat exchangers.", v:"International Communications in Heat and Mass Transfer.", d:"10.1016/j.icheatmasstransfer.2026.111252"},
+    {t:"journal", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P. (2025)", ti:"Demarcating wetting states classification of textured surfaces using machine learning.", v:"Procedia Computer Science.", d:"10.1016/j.procs.2025.04.622"},
+    {t:"journal", a:"Meshram, G. S. & Biswal, G. (2025)", ti:"Machine learning-based prediction of Nusselt number for vertical helical coils in natural convection heat transfer.", v:"International Communications in Heat and Mass Transfer.", d:"10.1016/j.icheatmasstransfer.2025.108983"},
+    {t:"journal", a:"Meshram, G. S. (2025)", ti:"Quantifying surface wettability in textured surfaces using a two-dimensional pseudo-potential multiphase lattice Boltzmann model.", v:"Journal of Adhesion Science and Technology, 1–25.", d:"10.1080/01694243.2025.2452861"},
+    {t:"journal", a:"Meshram, G. S. & Biswal, G. (2025)", ti:"Surface wettability analysis using a microdroplet: A numerical approach.", v:"TESEA.", d:"10.32397/tesea.vol6.n1.676"},
+    {t:"journal", a:"Khelkar, A. B., Das, R. S., & Meshram, G. S. (2025)", ti:"Performance improvement of a single-pass solar air heater by introducing cuboidal-shaped vortex generators on the absorbing plate.", v:"International Journal of Fluid Mechanics Research.", d:"10.1615/InterJFluidMechRes.2025056489"},
+    {t:"journal", a:"Meshram, G. S. & Biswal, G. (2024)", ti:"Exploration of heat transfer and entropy generation in an irregular wall cavity filled with Al₂O₃–water nanofluid.", v:"Numerical Heat Transfer, Part A: Applications, 1–22.", d:"10.1080/10407782.2024.2372707"},
+    {t:"journal", a:"Biswal, G. & Meshram, G. S. (2024)", ti:"Computational investigation of aspect ratio and inclination effects on natural convection heat transfer in nanofluid-filled rough wall cavities.", v:"Numerical Heat Transfer, Part A: Applications.", d:"10.1080/10407782.2024.2302077"},
+    // Under review
+    {t:"review", s:"under review", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P.", ti:"Droplet-LNO: Physics-informed Laplace neural operators for accurate prediction of droplet spreading dynamics on complex surfaces.", v:"Journal of Colloid and Interface Science."},
+    {t:"review", s:"under review", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P.", ti:"Amalgamation of physics-informed neural network and LBM for the prediction of unsteady fluid flows in fractal-rough microchannels.", v:"Computer Methods in Applied Mechanics and Engineering."},
+    {t:"review", s:"under review", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P.", ti:"Image analysis-inspired physics-guided deep learning for predicting fluid flow in irregular-shaped microchannels.", v:"Engineering Applications of Artificial Intelligence."},
+    {t:"review", s:"under review", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P.", ti:"Attention U-Net empowered lattice Boltzmann method for real-time flow prediction in patterned microchannels.", v:"Physics of Fluids."},
+    // Conference papers
+    {t:"conf", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P. (2026)", ti:"Learning droplet dynamics on rough unstructured surfaces using physics-informed neural networks (Student Abstract).", v:"Proceedings of the AAAI Conference on Artificial Intelligence (AAAI-26).", d:"10.1609/aaai.v40i48.42256"},
+    {t:"conf", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P. (2025)", ti:"Extending deep learning U-Net architecture for predicting unsteady fluid flows in textured microchannels.", v:"Thermal and Fluids Engineering Conference (TFEC 2025).", d:"10.1615/TFEC2025.ml.055517"},
+    {t:"conf", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P. (2025)", ti:"Deep learning for droplet spreading on rough surfaces using LST-Nets.", v:"APS March Meeting 2025, Anaheim, CA, USA.", u:"https://meetings-archive.aps.org/smt/2025/marm00/390/"},
+    {t:"conf", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P. (2025)", ti:"Deep learning approach for the reconstruction of droplet spreading based on wettability.", v:"1st IEEE International Conference on AIML-Applications for Engineering & Technology (ICAET).", d:"10.1109/ICAET63349.2025.10932310"},
+    {t:"conf", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P. (2024)", ti:"Droplet spreading prediction of textured surfaces: A machine learning approach.", v:"International Conference on Intelligent Systems and Advanced Applications (ICISAA)."},
+    {t:"conf", a:"Anand, R., Meshram, G. S., & Kumar, P. (2024)", ti:"Experimental analysis of high-conductivity solid-state electrolyte Li₇La₃Zr₂O₁₂ (LLZO) for Li-ion batteries.", v:"IEEE 3rd International Conference on Electrical Power and Energy Systems (ICEPES)."},
+    {t:"conf", a:"Meshram, G. S. & Biswal, G. (2024)", ti:"Effect of solid–fluid interaction strength on a water droplet placed centrally on curved surfaces using the lattice Boltzmann method.", v:"AIP Conference Proceedings, Vol. 3108, No. 1."},
+    {t:"conf", a:"Meshram, G. S., Chakraborty, S., & Chakrabarti, P. P. (2023)", ti:"Deep learning perspectives on surface wettability: LSTM predictions for water droplet contact angles.", v:"1st DMIHER International Conference on AI in Education and Industry 4.0 (IDICAIEI), IEEE."},
+    {t:"conf", a:"Meshram, G. S., Biswal, G., & Deshmukh, D. (2023)", ti:"Effect of solid–fluid interaction parameter on wettability of surfaces with irregular triangular micropillars using the lattice Boltzmann method.", v:"International Conference on Energy, Materials and Communication Engineering (ICEMCE), IEEE."},
+    {t:"conf", a:"Meshram, G. S., Biswal, G., & Kondaraju, S. (2023)", ti:"Numerical investigation of surface wettability with textured surfaces using the lattice Boltzmann method.", v:"6th International Conference on Advances in Science and Technology (ICAST), IEEE."},
+    {t:"conf", a:"Meshram, G. S. & Biswal, G. (2023)", ti:"Numerical investigation on the effect of hydrophobicity on fluid flow through microchannels using the lattice Boltzmann method.", v:"Recent Trends in Thermal and Fluid Sciences: Select Proceedings of INCOME 2023, 391."},
+    {t:"conf", a:"Meshram, G. S. & Kondaraju, S. (2021)", ti:"Numerical investigation of wettability and its effects on flow through textured micro-channels using the lattice Boltzmann method.", v:"26th National and 4th International ISHMT-ASTFE Heat and Mass Transfer Conference, IIT Madras. Begell House."},
+    // Book chapters
+    {t:"chapter", a:"Meshram, G. S., Biswal, G., & Kumar, P. (2025)", ti:"Computational fluid dynamics (CFD) for polymer composite analysis.", v:"In Advances in Polymer Composite Research, CRC Press.", d:"10.1201/9781003476337-4"},
+    {t:"chapter", a:"Anand, R., Kumar, P., & Meshram, G. S. (2025)", ti:"A rapid tool fabrication using fused deposition modeling.", v:"In Fused Deposition Modeling, CRC Press.", d:"10.1201/9781003686941-8"},
+    {t:"chapter", a:"Kumar, P. & Meshram, G. S. (2024)", ti:"Nanocomposites: Synthesis, characterization, and applications.", v:"In Advances in Polymer Composite Research, CRC Press.", d:"10.1201/9781003476337-11"}
+  ];
+  var GROUPS = [
+    {t:"journal", h:"Journal articles: published / accepted"},
+    {t:"review",  h:"Journal articles: under review"},
+    {t:"conf",    h:"Conference papers"},
+    {t:"chapter", h:"Book chapters"}
+  ];
+
+  function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function bold(a) { return esc(a).replace(/Meshram, G\. S\./g, "<strong>Meshram, G. S.</strong>"); }
+
+  function render(filter) {
+    var out = "", n = 0;
+    GROUPS.forEach(function (g) {
+      var items = [];
+      P.forEach(function (p) { n += (p.t === g.t) ? 1 : 0; if (p.t === g.t) { p.n = n; items.push(p); } });
+      if (filter !== "all" && filter !== g.t) return;
+      out += '<div class="pub-group"><h3>' + esc(g.h) + '</h3><ol class="pubs" style="list-style:none">';
+      items.forEach(function (p) {
+        var link = p.d ? '<a class="doi" href="' + D + esc(p.d) + '" target="_blank" rel="noopener">doi:' + esc(p.d) + '</a>'
+                 : p.u ? '<a class="doi" href="' + esc(p.u) + '" target="_blank" rel="noopener">View abstract</a>' : "";
+        var st = p.s ? '<span class="status">' + esc(p.s) + '</span>' : "";
+        out += '<li class="pub"><span class="n">[' + p.n + ']</span><div>' +
+               '<div class="t">' + esc(p.ti) + st + '</div>' +
+               '<div class="m">' + bold(p.a) + '. <em>' + esc(p.v) + '</em></div>' + link + '</div></li>';
+      });
+      out += '</ol></div>';
+    });
+    document.getElementById("pub-list").innerHTML = out;
+  }
+
+  document.querySelectorAll(".filters button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".filters button").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      render(b.getAttribute("data-f"));
+    });
+  });
+  render("all");
+</script>
+</body>
+</html>
